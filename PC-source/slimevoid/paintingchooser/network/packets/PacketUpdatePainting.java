@@ -1,6 +1,6 @@
 package slimevoid.paintingchooser.network.packets;
 
-import slimevoid.paintingchooser.EntityPaintings;
+import net.minecraft.entity.item.EntityPainting;
 import eurysmods.network.packets.core.PacketIds;
 import eurysmods.network.packets.core.PacketPayload;
 
@@ -10,10 +10,10 @@ public class PacketUpdatePainting extends PacketPainting {
 		super(PacketIds.UPDATE);
 	}
 
-	public PacketUpdatePainting(EntityPaintings entitypaintings) {
+	public PacketUpdatePainting(EntityPainting entitypaintings) {
 		this();
 
-		this.payload = new PacketPayload(2, 0, 2, 0);
+		this.payload = new PacketPayload(3, 0, 1, 0);
 		this.xPosition = entitypaintings.xPosition;
 		this.yPosition = entitypaintings.yPosition;
 		this.zPosition = entitypaintings.zPosition;
@@ -22,40 +22,40 @@ public class PacketUpdatePainting extends PacketPainting {
 		this.isChunkDataPacket = true;
 	}
 
-	public PacketUpdatePainting(EntityPaintings entitypaintings, String command) {
+	public PacketUpdatePainting(EntityPainting entitypaintings, String command) {
 		this(entitypaintings);
 		this.setCommand(command);
 	}
-	
+
 	public void setCommand(String command) {
 		this.payload.setStringPayload(0, command);
-	}
-
-	public void setArtTitle(String title) {
-		this.payload.setStringPayload(1, title);
 	}
 
 	public void setEntityId(int entityId) {
 		this.payload.setIntPayload(0, entityId);
 	}
 
+	public void setArtConstant(int enumValue) {
+		this.payload.setIntPayload(1, enumValue);
+	}
+
 	public void setDirection(int direction) {
-		this.payload.setIntPayload(1, direction);
+		this.payload.setIntPayload(2, direction);
 	}
-	
-	public int getEntityId() {
-		return this.payload.getIntPayload(0);
-	}
-	
-	public int getDirection() {
-		return this.payload.getIntPayload(1);
-	}
-	
+
 	public String getCommand() {
 		return this.payload.getStringPayload(0);
 	}
 
-	public String getArtTitle() {
-		return this.payload.getStringPayload(1);
+	public int getEntityId() {
+		return this.payload.getIntPayload(0);
+	}
+
+	public int getArtConstant() {
+		return this.payload.getIntPayload(1);
+	}
+
+	public int getDirection() {
+		return this.payload.getIntPayload(2);
 	}
 }

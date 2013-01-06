@@ -2,11 +2,11 @@ package slimevoid.paintingchooser.proxy;
 
 import java.util.ArrayList;
 
-import slimevoid.paintingchooser.EntityPaintings;
 import slimevoid.paintingchooser.api.IPCCommonProxy;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
 import slimevoid.paintingchooser.network.packets.PacketPaintingGui;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.NetHandler;
@@ -21,12 +21,15 @@ import eurysmods.api.IPacketHandling;
 public class PC_CommonProxy implements IPCCommonProxy {
 
 	@Override
-	public void displayEntityGui(World world, EntityPlayer entityplayer, Entity entity, ArrayList list) {
-		PacketPaintingGui packet = new PacketPaintingGui((EntityPaintings)entity, list);
+	public void displayEntityGui(World world, EntityPlayer entityplayer,
+			Entity entity, ArrayList list) {
+		PacketPaintingGui packet = new PacketPaintingGui(
+				(EntityPainting) entity, list);
 		packet.setSender(PCPacketIds.SERVER);
-		PacketDispatcher.sendPacketToPlayer(packet.getPacket(), (Player) entityplayer);
+		PacketDispatcher.sendPacketToPlayer(packet.getPacket(),
+				(Player) entityplayer);
 	}
-	
+
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z) {
@@ -43,19 +46,19 @@ public class PC_CommonProxy implements IPCCommonProxy {
 	@Override
 	public void preInit() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void registerTickHandler() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void registerRenderInformation() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -91,14 +94,14 @@ public class PC_CommonProxy implements IPCCommonProxy {
 	public void registerTileEntitySpecialRenderer(
 			Class<? extends TileEntity> clazz) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void displayTileEntityGui(EntityPlayer entityplayer,
 			TileEntity tileentity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -123,7 +126,7 @@ public class PC_CommonProxy implements IPCCommonProxy {
 	public void login(NetHandler handler, INetworkManager manager,
 			Packet1Login login) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -2,12 +2,11 @@ package slimevoid.paintingchooser.network.packets;
 
 import java.util.ArrayList;
 
+import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.util.EnumArt;
 
 import eurysmods.network.packets.core.PacketIds;
 import eurysmods.network.packets.core.PacketPayload;
-
-import slimevoid.paintingchooser.EntityPaintings;
 
 public class PacketPaintingGui extends PacketPainting {
 
@@ -15,7 +14,7 @@ public class PacketPaintingGui extends PacketPainting {
 		super(PacketIds.GUI);
 	}
 
-	public PacketPaintingGui(EntityPaintings entitypaintings, ArrayList artList) {
+	public PacketPaintingGui(EntityPainting entitypaintings, ArrayList artList) {
 		this();
 		this.payload = new PacketPayload(2, 0, artList.size(), 0);
 		this.xPosition = entitypaintings.xPosition;
@@ -27,7 +26,7 @@ public class PacketPaintingGui extends PacketPainting {
 		this.isChunkDataPacket = true;
 	}
 
-	public PacketPaintingGui(EntityPaintings entitypaintings, int i) {
+	public PacketPaintingGui(EntityPainting entitypaintings, int i) {
 		this();
 		this.payload = new PacketPayload(2, 0, 0, 0);
 		this.xPosition = entitypaintings.xPosition;
@@ -45,22 +44,22 @@ public class PacketPaintingGui extends PacketPainting {
 	private void setKillCode(int i) {
 		this.payload.setIntPayload(1, i);
 	}
-	
+
 	public int getEntityId() {
 		return this.payload.getIntPayload(0);
 	}
-	
+
 	public int getKillCode() {
 		return this.payload.getIntPayload(1);
 	}
-	
+
 	public void setArtList(ArrayList artList) {
 		for (int i = 0; i < artList.size(); i++) {
-			EnumArt art = (EnumArt)artList.get(i);
+			EnumArt art = (EnumArt) artList.get(i);
 			this.payload.setStringPayload(i, art.title);
 		}
 	}
-	
+
 	public ArrayList getArtList() {
 		ArrayList artList = new ArrayList();
 		EnumArt[] art = EnumArt.values();

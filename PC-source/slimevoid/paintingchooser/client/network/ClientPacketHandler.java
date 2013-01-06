@@ -6,63 +6,54 @@ import java.io.DataInputStream;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 import eurysmods.network.packets.core.PacketIds;
-import eurysmods.network.packets.core.PacketTileEntity;
 import eurysmods.network.packets.core.PacketUpdate;
 
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.util.EnumArt;
 import net.minecraft.world.World;
 
-import slimevoid.paintingchooser.EntityPaintings;
+import slimevoid.paintingchooser.PCCore;
 import slimevoid.paintingchooser.PCInit;
 import slimevoid.paintingchooser.api.IPCCommonProxy;
-import slimevoid.paintingchooser.api.IPaintingPacketHandling;
 import slimevoid.paintingchooser.network.CommonPacketHandler;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
-import slimevoid.paintingchooser.network.packets.PacketPainting;
 import slimevoid.paintingchooser.network.packets.PacketPaintingGui;
 import slimevoid.paintingchooser.network.packets.PacketUpdatePainting;
 
-
 public class ClientPacketHandler implements IPacketHandler {
 
-	public static void handleGuiPacket(PacketUpdate packet, EntityPlayer entityplayer,
-			World world) {
-		if (((PacketPainting)packet).getSender() == PCPacketIds.CLIENT) {
+	public static void handleGuiPacket(PacketUpdate packet,
+			EntityPlayer entityplayer, World world) {
+		if (((PacketPaintingGui) packet).getSender() == PCPacketIds.CLIENT) {
 			CommonPacketHandler.handleGuiPacket(packet, entityplayer, world);
-		}
-		if (packet instanceof PacketPaintingGui) {
-			PacketPaintingGui guiPacket = (PacketPaintingGui)packet;
+		} else if (packet instanceof PacketPaintingGui) {
+			PacketPaintingGui guiPacket = (PacketPaintingGui) packet;
 			int entityId = guiPacket.getEntityId();
-			Entity entity = PCInit.getEntityByID(world, entityId);
-			if (entity != null && entity instanceof EntityPaintings) {
-	        	((IPCCommonProxy) PCInit.PChooser.getProxy()).displayEntityGui(world, entityplayer, entity, guiPacket.getArtList());
+			Entity entity = PCCore.getEntityByID(entityId);
+			if (entity != null) {
+				((IPCCommonProxy) PCInit.PChooser.getProxy()).displayEntityGui(
+						world, entityplayer, entity, guiPacket.getArtList());
 			}
 		}
 	}
 
-	public static void handlePacket(PacketUpdate packet, EntityPlayer entityplayer,
-			World world) {
-		if (((PacketPainting)packet).getSender() == PCPacketIds.CLIENT) {
+	public static void handlePacket(PacketUpdate packet,
+			EntityPlayer entityplayer, World world) {
+		if (((PacketUpdatePainting) packet).getSender() == PCPacketIds.CLIENT) {
 			CommonPacketHandler.handlePacket(packet, entityplayer, world);
-		}
-		if (packet instanceof PacketUpdatePainting) {
-			PacketUpdatePainting paintingPacket = (PacketUpdatePainting)packet;
+		} else if (packet instanceof PacketUpdatePainting) {
+			PacketUpdatePainting paintingPacket = (PacketUpdatePainting) packet;
 			int entityId = paintingPacket.getEntityId();
 			int direction = paintingPacket.getDirection();
-			EntityPaintings painting = null;
-			if (paintingPacket.getCommand().equals("FIRSTUPDATE")) {
-				painting = new EntityPaintings(world, entityplayer, packet.xPosition, packet.yPosition, packet.zPosition, direction, "");
-			}
-			if (paintingPacket.getCommand().equals("UPDATEPAINTING")) {
-				String artTitle = paintingPacket.getArtTitle();
-				painting = new EntityPaintings(world, entityplayer, packet.xPosition, packet.yPosition, packet.zPosition, direction, artTitle);	
-			}
-			if (painting != null) {
-				((WorldClient)world).addEntityToWorld(entityId, painting);
+			Entity entity = world.getEntityByID(entityId);
+			if (entity != null && entity instanceof EntityPainting) {
+				EnumArt art = EnumArt.values()[paintingPacket.getArtConstant()];
+				((EntityPainting) entity).art = art;
+				((EntityPainting) entity).setDirection(direction);
 			}
 		}
 	}

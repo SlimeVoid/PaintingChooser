@@ -9,5 +9,6 @@ import eurysmods.api.ICommonProxy;
 
 public interface IPCCommonProxy extends ICommonProxy {
 
-	public void displayEntityGui(World world, EntityPlayer entityplayer, Entity entity, ArrayList list);
+	public void displayEntityGui(World world, EntityPlayer entityplayer,
+			Entity entity, ArrayList list);
 }

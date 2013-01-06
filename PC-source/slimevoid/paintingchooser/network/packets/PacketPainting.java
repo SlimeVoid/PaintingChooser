@@ -9,9 +9,9 @@ import slimevoid.paintingchooser.PCInit;
 import eurysmods.network.packets.core.PacketUpdate;
 
 public class PacketPainting extends PacketUpdate {
-	
+
 	private int sender;
-	
+
 	public PacketPainting(int packetId) {
 		super(packetId);
 		this.setChannel(PCInit.PChooser.getModChannel());
@@ -37,7 +37,7 @@ public class PacketPainting extends PacketUpdate {
 	public int getSender() {
 		return sender;
 	}
-	
+
 	public void setSender(int sender) {
 		this.sender = sender;
 	}
