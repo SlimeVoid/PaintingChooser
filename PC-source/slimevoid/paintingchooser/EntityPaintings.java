@@ -2,7 +2,11 @@ package slimevoid.paintingchooser;
 
 import java.util.ArrayList;
 
-import slimevoid.paintingchooser.network.PacketUpdatePainting;
+import cpw.mods.fml.common.network.PacketDispatcher;
+
+import slimevoid.paintingchooser.api.IPCCommonProxy;
+import slimevoid.paintingchooser.network.packets.PCPacketIds;
+import slimevoid.paintingchooser.network.packets.PacketUpdatePainting;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityPainting;
@@ -53,7 +57,8 @@ public class EntityPaintings extends EntityPainting
         this.setDirection(facing);
         this.owner = entityplayer.username;
         if (artList.size() > 0) {
-        	PCInit.PChooser.getProxy().openGui(this.worldObj, entityplayer, this, artList);
+			System.out.println("Can have art");
+        	((IPCCommonProxy) PCInit.PChooser.getProxy()).displayEntityGui(this.worldObj, entityplayer, this, artList);
         }
     }
     
@@ -83,7 +88,7 @@ public class EntityPaintings extends EntityPainting
         this.setDirection(facing);
     }
 
-    public void setPainting(EnumArt enumart)
+	public void setPainting(EnumArt enumart)
     {
         this.art = enumart;
         this.setDirection(this.hangingDirection);
@@ -123,7 +128,8 @@ public class EntityPaintings extends EntityPainting
 					paintingPacket.setCommand("UPDATEPAINTING");
 					paintingPacket.setArtTitle(this.art.title);
 				}
-				PCInit.PChooser.getProxy().sendPacketToAll(paintingPacket.getPacket(), this.xPosition, this.yPosition, this.zPosition, 16, PaintingChooser.instance);
+				paintingPacket.setSender(PCPacketIds.SERVER);
+				PacketDispatcher.sendPacketToAllAround(this.xPosition, this.yPosition, this.zPosition, 16, this.worldObj.provider.dimensionId, paintingPacket.getPacket());
 			}
 		}
 	}

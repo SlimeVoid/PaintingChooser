@@ -2,7 +2,12 @@ package slimevoid.paintingchooser.client;
 
 import java.util.Random;
 
-import net.minecraft.src.*;
+import net.minecraft.client.renderer.OpenGlHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.EnumArt;
+import net.minecraft.util.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -107,22 +112,22 @@ public class RenderPaintings extends Render
         int var5 = MathHelper.floor_double(par1EntityPainting.posY + (double)(par3 / 16.0F));
         int var6 = MathHelper.floor_double(par1EntityPainting.posZ);
 
-        if (par1EntityPainting.direction == 0)
+        if (par1EntityPainting.hangingDirection == 0)
         {
             var4 = MathHelper.floor_double(par1EntityPainting.posX + (double)(par2 / 16.0F));
         }
 
-        if (par1EntityPainting.direction == 1)
+        if (par1EntityPainting.hangingDirection == 1)
         {
             var6 = MathHelper.floor_double(par1EntityPainting.posZ - (double)(par2 / 16.0F));
         }
 
-        if (par1EntityPainting.direction == 2)
+        if (par1EntityPainting.hangingDirection == 2)
         {
             var4 = MathHelper.floor_double(par1EntityPainting.posX - (double)(par2 / 16.0F));
         }
 
-        if (par1EntityPainting.direction == 3)
+        if (par1EntityPainting.hangingDirection == 3)
         {
             var6 = MathHelper.floor_double(par1EntityPainting.posZ + (double)(par2 / 16.0F));
         }

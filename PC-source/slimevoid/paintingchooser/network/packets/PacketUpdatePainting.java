@@ -1,16 +1,16 @@
-package slimevoid.paintingchooser.network;
+package slimevoid.paintingchooser.network.packets;
 
-import net.minecraft.src.EntityPainting;
-import net.minecraft.src.EurysMods.network.PacketIds;
-import net.minecraft.src.EurysMods.network.PacketPayload;
+import slimevoid.paintingchooser.EntityPaintings;
+import eurysmods.network.packets.core.PacketIds;
+import eurysmods.network.packets.core.PacketPayload;
 
 public class PacketUpdatePainting extends PacketPainting {
 
 	public PacketUpdatePainting() {
-		super(PacketIds.PAINTING_UPDATE);
+		super(PacketIds.UPDATE);
 	}
 
-	public PacketUpdatePainting(EntityPainting entitypaintings) {
+	public PacketUpdatePainting(EntityPaintings entitypaintings) {
 		this();
 
 		this.payload = new PacketPayload(2, 0, 2, 0);
@@ -18,11 +18,11 @@ public class PacketUpdatePainting extends PacketPainting {
 		this.yPosition = entitypaintings.yPosition;
 		this.zPosition = entitypaintings.zPosition;
 		this.setEntityId(entitypaintings.entityId);
-		this.setDirection(entitypaintings.direction);
+		this.setDirection(entitypaintings.hangingDirection);
 		this.isChunkDataPacket = true;
 	}
 
-	public PacketUpdatePainting(EntityPainting entitypaintings, String command) {
+	public PacketUpdatePainting(EntityPaintings entitypaintings, String command) {
 		this(entitypaintings);
 		this.setCommand(command);
 	}

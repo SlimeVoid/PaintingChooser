@@ -1,21 +1,21 @@
-package slimevoid.paintingchooser.network;
+package slimevoid.paintingchooser.network.packets;
 
 import java.util.ArrayList;
 
-import slimevoid.paintingchooser.EntityPaintings;
+import net.minecraft.util.EnumArt;
 
-import net.minecraft.src.EntityPainting;
-import net.minecraft.src.EnumArt;
-import net.minecraft.src.EurysMods.network.PacketIds;
-import net.minecraft.src.EurysMods.network.PacketPayload;
+import eurysmods.network.packets.core.PacketIds;
+import eurysmods.network.packets.core.PacketPayload;
+
+import slimevoid.paintingchooser.EntityPaintings;
 
 public class PacketPaintingGui extends PacketPainting {
 
 	public PacketPaintingGui() {
-		super(PacketIds.PAINTING_GUI);
+		super(PacketIds.GUI);
 	}
 
-	public PacketPaintingGui(EntityPainting entitypaintings, ArrayList artList) {
+	public PacketPaintingGui(EntityPaintings entitypaintings, ArrayList artList) {
 		this();
 		this.payload = new PacketPayload(2, 0, artList.size(), 0);
 		this.xPosition = entitypaintings.xPosition;
@@ -27,7 +27,7 @@ public class PacketPaintingGui extends PacketPainting {
 		this.isChunkDataPacket = true;
 	}
 
-	public PacketPaintingGui(EntityPainting entitypaintings, int i) {
+	public PacketPaintingGui(EntityPaintings entitypaintings, int i) {
 		this();
 		this.payload = new PacketPayload(2, 0, 0, 0);
 		this.xPosition = entitypaintings.xPosition;

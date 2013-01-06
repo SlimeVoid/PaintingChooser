@@ -3,6 +3,9 @@ package slimevoid.paintingchooser;
 import java.io.File;
 import java.util.ArrayList;
 
+import slimevoid.paintingchooser.client.RenderPaintings;
+
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 import eurysmods.api.ICommonProxy;
@@ -30,8 +33,10 @@ public class PCCore {
 	
 	public static void addItems() {
 		entityPaintingsID = configurationProperties();
+		//EntityRegistry.registerModEntity(EntityPaintings.class, "Choosable Painting", entityPaintingsID, PaintingChooser.instance, 250, 1, false);
 		EntityRegistry.registerGlobalEntityID(EntityPaintings.class, "Choosable Painting", entityPaintingsID);
-		itemPaintings = (new ItemPaintings(itemPaintingsID - 256, EntityPaintings.class)).setItemName("itemPainting");
+		RenderingRegistry.registerEntityRenderingHandler(EntityPaintings.class, new RenderPaintings());
+		itemPaintings = (new ItemPaintings(itemPaintingsID - 256, EntityPaintings.class)).setIconCoord(10, 1).setItemName("painting");
 	}
 
 	public static void addNames() {

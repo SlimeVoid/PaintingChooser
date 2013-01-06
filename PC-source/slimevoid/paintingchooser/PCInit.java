@@ -1,7 +1,5 @@
 package slimevoid.paintingchooser;
 
-import java.util.ArrayList;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
@@ -56,20 +54,5 @@ public class PCInit {
 			}
 		}
 		return null;
-	}
-
-	public static void openGui(World world, EntityPlayer entityplayer, EntityPainting entitypaintings, ArrayList artList) {
-		if (!world.isRemote) {
-			PacketPaintingGui guiPacket = new PacketPaintingGui(entitypaintings, artList);
-			PChooser.getProxy().sendPacket(entityplayer, guiPacket.getPacket());
-		}
-	}
-
-	public static void notifyPlayers(EntityPainting entitypainting) {
-		if (entitypainting != null && entitypainting.art != null) {
-			PacketUpdatePainting paintingPacket = new PacketUpdatePainting(entitypainting, "UPDATEPAINTING");
-			paintingPacket.setArtTitle(entitypainting.art.title);
-			PCInit.PChooser.getProxy().sendPacketToAll(paintingPacket.getPacket(), entitypainting.xPosition, entitypainting.yPosition, entitypainting.zPosition, 16, PaintingChooser.instance);
-		}
 	}
 }

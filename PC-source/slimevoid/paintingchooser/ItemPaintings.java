@@ -8,10 +8,11 @@ import net.minecraft.util.Direction;
 import net.minecraft.world.World;
 
 public class ItemPaintings extends ItemHangingEntity {
-	private Class hangingEntityClass;
+	private Class paintingClass;
 
 	public ItemPaintings(int par1, Class entityClass) {
 		super(par1, entityClass);
+		this.paintingClass = entityClass;
 	}
 
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world,
@@ -22,16 +23,17 @@ public class ItemPaintings extends ItemHangingEntity {
 			return false;
 		} else {
 			int var11 = Direction.vineGrowth[side];
-			EntityHanging var12 = this.createHangingEntity(world,
+			EntityHanging painting = this.createHangingEntity(world,
 					entityplayer, x, y, z, var11);
 
 			if (!entityplayer.canPlayerEdit(x, y, z, side,
 					itemstack)) {
 				return false;
 			} else {
-				if (var12 != null && var12.onValidSurface()) {
+				if (painting != null && painting.onValidSurface()) {
 					if (!world.isRemote) {
-						world.spawnEntityInWorld(var12);
+						System.out.println("creating entity");
+						world.spawnEntityInWorld(painting);
 					}
 
 					--itemstack.stackSize;
@@ -44,6 +46,6 @@ public class ItemPaintings extends ItemHangingEntity {
 
 	private EntityHanging createHangingEntity(World world, EntityPlayer entityplayer, int x, int y, int z, int side)
     {
-        return (EntityHanging)(this.hangingEntityClass == EntityPaintings.class ? new EntityPaintings(world, entityplayer, x, y, z, side) : null);
+        return this.paintingClass == EntityPaintings.class ? new EntityPaintings(world, entityplayer, x, y, z, side) : null;
     }
 }

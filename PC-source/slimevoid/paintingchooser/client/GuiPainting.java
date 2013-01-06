@@ -3,24 +3,30 @@ package slimevoid.paintingchooser.client;
 import java.util.ArrayList;
 import java.util.Random;
 
-import net.minecraft.src.*;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.entity.item.EntityPainting;
+import net.minecraft.src.ModLoader;
+import net.minecraft.util.EnumArt;
 
 import org.lwjgl.opengl.GL11;
 
+import slimevoid.paintingchooser.EntityPaintings;
 import slimevoid.paintingchooser.PCInit;
-import slimevoid.paintingchooser.network.PacketPaintingGui;
-import slimevoid.paintingchooser.network.PacketUpdatePainting;
+import slimevoid.paintingchooser.network.packets.PCPacketIds;
+import slimevoid.paintingchooser.network.packets.PacketPaintingGui;
+import slimevoid.paintingchooser.network.packets.PacketUpdatePainting;
 
 public class GuiPainting extends GuiScreen
 {
     private EnumArt selected;
     private int xSize = 248;
     private int ySize = 207;
-    private EntityPainting myPainting;
+    private EntityPaintings myPainting;
     private ArrayList possiblePaintings;
     public EnumArt allArt;
 
-    public GuiPainting(EntityPainting entitypaintings, ArrayList artList)
+    public GuiPainting(EntityPaintings entitypaintings, ArrayList artList)
     {
         this.myPainting = entitypaintings;
         this.possiblePaintings = artList;
@@ -103,26 +109,19 @@ public class GuiPainting extends GuiScreen
     {
         if (var2 == 1 || var2 == this.mc.gameSettings.keyBindInventory.keyCode)
         {
-        	if (PCInit.PChooser.getProxy().isClient) {
-        		this.myPainting.setDead();
-        	}
-        	if (!PCInit.PChooser.getProxy().isClient) {
-        		PacketPaintingGui guiPacket = new PacketPaintingGui(this.myPainting, 999);
-        		PCInit.PChooser.getProxy().sendPacket(mc.thePlayer, guiPacket.getPacket());
-        	}
+        	this.myPainting.setDead();
+        	PacketPaintingGui guiPacket = new PacketPaintingGui(this.myPainting, 999);
+        	guiPacket.setSender(PCPacketIds.CLIENT);
+    		ModLoader.sendPacket(guiPacket.getPacket());
             this.mc.thePlayer.closeScreen();
         }
     }
     
     protected void setPainting(EnumArt enumart) {
-    	if (!this.mc.theWorld.isRemote) {
-            this.myPainting.art = enumart;
-            this.myPainting.setDirection(this.myPainting.direction);
-    	} else {
-    		PacketUpdatePainting paintingPacket = new PacketUpdatePainting(this.myPainting, "SETPAINTING");
-    		paintingPacket.setArtTitle(enumart.title);
-    		PCInit.PChooser.getProxy().sendPacket(this.mc.thePlayer, paintingPacket.getPacket());
-    	}
+		PacketUpdatePainting paintingPacket = new PacketUpdatePainting(this.myPainting, "SETPAINTING");
+		paintingPacket.setArtTitle(enumart.title);
+		paintingPacket.setSender(PCPacketIds.CLIENT);
+		ModLoader.sendPacket(paintingPacket.getPacket());
     }
 
     /**
