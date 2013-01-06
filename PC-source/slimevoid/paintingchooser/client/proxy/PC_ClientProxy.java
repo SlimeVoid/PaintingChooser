@@ -9,9 +9,9 @@ import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.src.ModLoader;
 import net.minecraft.world.World;
-import slimevoid.paintingchooser.EntityPaintings;
-import slimevoid.paintingchooser.client.GuiPainting;
-import slimevoid.paintingchooser.client.RenderPaintings;
+import slimevoid.paintingchooser.client.gui.GuiPainting;
+import slimevoid.paintingchooser.client.render.RenderPaintings;
+import slimevoid.paintingchooser.entity.EntityPaintings;
 import slimevoid.paintingchooser.proxy.PC_CommonProxy;
 
 public class PC_ClientProxy extends PC_CommonProxy {

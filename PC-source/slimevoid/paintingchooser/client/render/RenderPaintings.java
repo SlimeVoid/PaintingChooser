@@ -1,4 +1,4 @@
-package slimevoid.paintingchooser.client;
+package slimevoid.paintingchooser.client.render;
 
 import java.util.Random;
 
@@ -12,7 +12,7 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import slimevoid.paintingchooser.EntityPaintings;
+import slimevoid.paintingchooser.entity.EntityPaintings;
 
 public class RenderPaintings extends Render {
 	/** RNG. */

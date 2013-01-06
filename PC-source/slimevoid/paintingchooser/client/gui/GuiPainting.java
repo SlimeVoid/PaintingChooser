@@ -1,4 +1,4 @@
-package slimevoid.paintingchooser.client;
+package slimevoid.paintingchooser.client.gui;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -1,10 +1,11 @@
-package slimevoid.paintingchooser;
+package slimevoid.paintingchooser.entity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
 
+import slimevoid.paintingchooser.PCCore;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
 import slimevoid.paintingchooser.network.packets.PacketUpdatePainting;
 

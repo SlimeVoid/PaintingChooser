@@ -1,6 +1,9 @@
 package slimevoid.paintingchooser;
 
 import java.io.File;
+
+import slimevoid.paintingchooser.entity.EntityPaintings;
+import slimevoid.paintingchooser.items.ItemPaintings;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

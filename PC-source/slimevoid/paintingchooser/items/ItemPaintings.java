@@ -1,8 +1,10 @@
-package slimevoid.paintingchooser;
+package slimevoid.paintingchooser.items;
 
 import java.util.ArrayList;
 
+import slimevoid.paintingchooser.PCInit;
 import slimevoid.paintingchooser.api.IPCCommonProxy;
+import slimevoid.paintingchooser.entity.EntityPaintings;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemHangingEntity;
