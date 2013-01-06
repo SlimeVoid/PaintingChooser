@@ -1,13 +1,15 @@
-package net.minecraft.src.PaintingChooser;
+package slimevoid.paintingchooser.client;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.*;
-import net.minecraft.src.PaintingChooser.network.PacketPaintingGui;
-import net.minecraft.src.PaintingChooser.network.PacketUpdatePainting;
 
 import org.lwjgl.opengl.GL11;
+
+import slimevoid.paintingchooser.PCInit;
+import slimevoid.paintingchooser.network.PacketPaintingGui;
+import slimevoid.paintingchooser.network.PacketUpdatePainting;
 
 public class GuiPainting extends GuiScreen
 {
@@ -101,12 +103,12 @@ public class GuiPainting extends GuiScreen
     {
         if (var2 == 1 || var2 == this.mc.gameSettings.keyBindInventory.keyCode)
         {
-        	if (PaintingChooser.PChooser.getProxy().isClient) {
+        	if (PCInit.PChooser.getProxy().isClient) {
         		this.myPainting.setDead();
         	}
-        	if (!PaintingChooser.PChooser.getProxy().isClient) {
+        	if (!PCInit.PChooser.getProxy().isClient) {
         		PacketPaintingGui guiPacket = new PacketPaintingGui(this.myPainting, 999);
-        		PaintingChooser.PChooser.getProxy().sendPacket(mc.thePlayer, guiPacket.getPacket());
+        		PCInit.PChooser.getProxy().sendPacket(mc.thePlayer, guiPacket.getPacket());
         	}
             this.mc.thePlayer.closeScreen();
         }
@@ -119,7 +121,7 @@ public class GuiPainting extends GuiScreen
     	} else {
     		PacketUpdatePainting paintingPacket = new PacketUpdatePainting(this.myPainting, "SETPAINTING");
     		paintingPacket.setArtTitle(enumart.title);
-    		PaintingChooser.PChooser.getProxy().sendPacket(this.mc.thePlayer, paintingPacket.getPacket());
+    		PCInit.PChooser.getProxy().sendPacket(this.mc.thePlayer, paintingPacket.getPacket());
     	}
     }
 

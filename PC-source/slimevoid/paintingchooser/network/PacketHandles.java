@@ -1,5 +1,8 @@
-package net.minecraft.src.PaintingChooser.network;
+package slimevoid.paintingchooser.network;
 
+import slimevoid.paintingchooser.EntityPaintings;
+import slimevoid.paintingchooser.PCCore;
+import slimevoid.paintingchooser.client.PaintingChooser;
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPainting;
@@ -9,9 +12,6 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import net.minecraft.src.EurysMods.network.IPacketHandling;
 import net.minecraft.src.EurysMods.network.PacketUpdate;
-import net.minecraft.src.PaintingChooser.EntityPaintings;
-import net.minecraft.src.PaintingChooser.PChooserCore;
-import net.minecraft.src.PaintingChooser.PaintingChooser;
 
 public class PacketHandles implements IPaintingPacketHandling {
 	@Override
@@ -29,7 +29,7 @@ public class PacketHandles implements IPaintingPacketHandling {
 				if (entity instanceof EntityPainting) {
 					EntityPainting entitypainting = (EntityPainting)entity;
 					entitypainting.setDead();
-					entitypainting.worldObj.spawnEntityInWorld(new EntityItem(entitypainting.worldObj, entitypainting.posX, entitypainting.posY, entitypainting.posZ, new ItemStack(PChooserCore.itemPaintings)));
+					entitypainting.worldObj.spawnEntityInWorld(new EntityItem(entitypainting.worldObj, entitypainting.posX, entitypainting.posY, entitypainting.posZ, new ItemStack(PCCore.itemPaintings)));
 				}
 			}
 		}

@@ -1,12 +1,13 @@
-package net.minecraft.src.PaintingChooser.network;
+package slimevoid.paintingchooser.network;
 
 import java.util.ArrayList;
+
+import slimevoid.paintingchooser.EntityPaintings;
 
 import net.minecraft.src.EntityPainting;
 import net.minecraft.src.EnumArt;
 import net.minecraft.src.EurysMods.network.PacketIds;
 import net.minecraft.src.EurysMods.network.PacketPayload;
-import net.minecraft.src.PaintingChooser.EntityPaintings;
 
 public class PacketPaintingGui extends PacketPainting {
 

@@ -1,4 +1,4 @@
-package net.minecraft.src.PaintingChooser;
+package slimevoid.paintingchooser.client;
 
 import java.util.Random;
 
@@ -6,6 +6,8 @@ import net.minecraft.src.*;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
+import slimevoid.paintingchooser.EntityPaintings;
 
 public class RenderPaintings extends Render
 {

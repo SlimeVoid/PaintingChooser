@@ -1,6 +1,13 @@
-package net.minecraft.src.PaintingChooser.network;
+package slimevoid.paintingchooser.client.network;
 
 import java.util.ArrayList;
+
+import slimevoid.paintingchooser.EntityPaintings;
+import slimevoid.paintingchooser.GuiPainting;
+import slimevoid.paintingchooser.PCInit;
+import slimevoid.paintingchooser.network.IPaintingPacketHandling;
+import slimevoid.paintingchooser.network.PacketPaintingGui;
+import slimevoid.paintingchooser.network.PacketUpdatePainting;
 
 import net.minecraft.src.Entity;
 import net.minecraft.src.EntityPainting;
@@ -11,9 +18,6 @@ import net.minecraft.src.World;
 import net.minecraft.src.WorldClient;
 import net.minecraft.src.EurysMods.network.IPacketHandling;
 import net.minecraft.src.EurysMods.network.PacketUpdate;
-import net.minecraft.src.PaintingChooser.EntityPaintings;
-import net.minecraft.src.PaintingChooser.GuiPainting;
-import net.minecraft.src.PaintingChooser.PaintingChooser;
 
 public class PacketHandles implements IPaintingPacketHandling {
 	@Override
@@ -27,7 +31,7 @@ public class PacketHandles implements IPaintingPacketHandling {
 		if (packet instanceof PacketPaintingGui) {
 			PacketPaintingGui guiPacket = (PacketPaintingGui)packet;
 			int entityId = guiPacket.getEntityId();
-			Entity entity = PaintingChooser.getEntityByID(world, entityId);
+			Entity entity = PCInit.getEntityByID(world, entityId);
 			if (entity != null && entity instanceof EntityPainting) {
 	        	ModLoader.openGUI(entityplayer, new GuiPainting((EntityPainting)entity, guiPacket.getArtList()));
 			}

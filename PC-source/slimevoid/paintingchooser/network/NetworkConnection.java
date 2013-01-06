@@ -1,7 +1,10 @@
-package net.minecraft.src.PaintingChooser.network;
+package slimevoid.paintingchooser.network;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
+
+import slimevoid.paintingchooser.PCCore;
+import slimevoid.paintingchooser.client.PaintingChooser;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ModLoader;
@@ -10,13 +13,11 @@ import net.minecraft.src.Packet1Login;
 import net.minecraft.src.World;
 import net.minecraft.src.EurysMods.network.INetworkConnections;
 import net.minecraft.src.EurysMods.network.PacketIds;
-import net.minecraft.src.PaintingChooser.PChooserCore;
-import net.minecraft.src.PaintingChooser.PaintingChooser;
 import net.minecraft.src.forge.MessageManager;
 
 public class NetworkConnection implements INetworkConnections {
 	private static String modName = PaintingChooser.PChooser.getModName();
-	private static String modVersion = PChooserCore.version;
+	private static String modVersion = PCCore.version;
 	private static String modChannel = PaintingChooser.PChooser.getModChannel();
 
 	@Override

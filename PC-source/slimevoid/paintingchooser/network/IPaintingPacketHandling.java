@@ -1,4 +1,4 @@
-package net.minecraft.src.PaintingChooser.network;
+package slimevoid.paintingchooser.network;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.World;

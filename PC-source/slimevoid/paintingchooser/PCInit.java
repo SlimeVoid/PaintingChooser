@@ -1,29 +1,29 @@
-package net.minecraft.src.PaintingChooser;
+package slimevoid.paintingchooser;
 
 import java.util.ArrayList;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPainting;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ModLoader;
-import net.minecraft.src.World;
-import net.minecraft.src.mod_PaintingChooser;
-import net.minecraft.src.EurysMods.*;
-import net.minecraft.src.EurysMods.core.ICore;
-import net.minecraft.src.PaintingChooser.network.PacketHandles;
-import net.minecraft.src.PaintingChooser.network.PacketPaintingGui;
-import net.minecraft.src.PaintingChooser.network.PacketUpdatePainting;
+import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
+import net.minecraft.world.World;
 
-public class PaintingChooser {
+import eurysmods.api.ICommonProxy;
+import eurysmods.api.ICore;
+import eurysmods.core.Core;
+import eurysmods.core.EurysCore;
+import eurysmods.core.EurysMods;
+import eurysmods.core.ItemRemover;
+import eurysmods.core.RecipeRemover;
 
-	public static String minecraftDir = EurysCore.getMinecraftDir();
+public class PCInit {
+
+	public static String minecraftDir = EurysMods.proxy.getMinecraftDir();
 	public static ICore PChooser;
 	private static boolean initialized = false;
 
-	public static void initialize() {
+	public static void initialize(ICommonProxy proxy) {
 		if (!initialized) {
 			initialized = true;
-			PChooser = new ServerCore(new ServerProxy(), new PacketHandles());
+			PChooser = new Core(proxy);
 			PChooser.setModName("PaintingChooser");
 			PChooser.setModChannel("PChooser");
 			load();
@@ -31,12 +31,14 @@ public class PaintingChooser {
 	}
 
 	private static void load() {
+		RecipeRemover.registerItemRecipeToRemove(Item.painting);
+		ItemRemover.removeVanillaItem(Item.painting);
 		EurysCore.console(PChooser.getModName(), "Registering items...");
-		PChooserCore.addItems();
+		PCCore.addItems();
 		EurysCore.console(PChooser.getModName(), "Naming items...");
-		PChooserCore.addNames();
+		PCCore.addNames();
 		EurysCore.console(PChooser.getModName(), "Registering recipes...");
-		PChooserCore.addRecipes();
+		PCCore.addRecipes();
 	}
 
 	public static Entity getEntityByID(World world, int entityId) {
@@ -67,7 +69,7 @@ public class PaintingChooser {
 		if (entitypainting != null && entitypainting.art != null) {
 			PacketUpdatePainting paintingPacket = new PacketUpdatePainting(entitypainting, "UPDATEPAINTING");
 			paintingPacket.setArtTitle(entitypainting.art.title);
-			PaintingChooser.PChooser.getProxy().sendPacketToAll(paintingPacket.getPacket(), entitypainting.xPosition, entitypainting.yPosition, entitypainting.zPosition, 16, mod_PaintingChooser.instance);
+			PCInit.PChooser.getProxy().sendPacketToAll(paintingPacket.getPacket(), entitypainting.xPosition, entitypainting.yPosition, entitypainting.zPosition, 16, PaintingChooser.instance);
 		}
 	}
 }

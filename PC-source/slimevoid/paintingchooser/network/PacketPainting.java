@@ -1,7 +1,7 @@
-package net.minecraft.src.PaintingChooser.network;
+package slimevoid.paintingchooser.network;
 
+import slimevoid.paintingchooser.client.PaintingChooser;
 import net.minecraft.src.EurysMods.network.PacketUpdate;
-import net.minecraft.src.PaintingChooser.PaintingChooser;
 
 public class PacketPainting extends PacketUpdate {
 	public PacketPainting(int packetId) {

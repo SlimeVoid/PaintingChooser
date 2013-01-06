@@ -1,4 +1,4 @@
-package net.minecraft.src.PaintingChooser;
+package slimevoid.paintingchooser.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.*;

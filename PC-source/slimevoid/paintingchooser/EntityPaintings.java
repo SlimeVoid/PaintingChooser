@@ -1,11 +1,17 @@
-package net.minecraft.src.PaintingChooser;
+package slimevoid.paintingchooser;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import net.minecraft.src.*;
-import net.minecraft.src.EurysMods.network.PacketPayload;
-import net.minecraft.src.PaintingChooser.network.PacketUpdatePainting;
+import slimevoid.paintingchooser.network.PacketUpdatePainting;
+
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityPainting;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumArt;
+import net.minecraft.world.World;
 
 public class EntityPaintings extends EntityPainting
 {
@@ -47,7 +53,7 @@ public class EntityPaintings extends EntityPainting
         this.setDirection(facing);
         this.owner = entityplayer.username;
         if (artList.size() > 0) {
-        	PaintingChooser.openGui(this.worldObj, entityplayer, this, artList);
+        	PCInit.PChooser.getProxy().openGui(this.worldObj, entityplayer, this, artList);
         }
     }
     
@@ -80,7 +86,7 @@ public class EntityPaintings extends EntityPainting
     public void setPainting(EnumArt enumart)
     {
         this.art = enumart;
-        this.setDirection(this.direction);
+        this.setDirection(this.hangingDirection);
     }
 
     /**
@@ -99,7 +105,7 @@ public class EntityPaintings extends EntityPainting
             if (!this.isDead && !this.onValidSurface())
             {
                 this.setDead();
-                this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(PChooserCore.itemPaintings)));
+                this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(PCCore.itemPaintings)));
             } else {
         		this.updatePainting();
             }
@@ -107,7 +113,7 @@ public class EntityPaintings extends EntityPainting
     }
 
     public void updatePainting() {
-		if (!PaintingChooser.PChooser.getProxy().isClient) {
+		if (!this.worldObj.isRemote) {
 			if (this != null && this.art != null) {
 				PacketUpdatePainting paintingPacket = new PacketUpdatePainting(this);
 				if (!firstTick) {
@@ -117,7 +123,7 @@ public class EntityPaintings extends EntityPainting
 					paintingPacket.setCommand("UPDATEPAINTING");
 					paintingPacket.setArtTitle(this.art.title);
 				}
-				PaintingChooser.PChooser.getProxy().sendPacketToAll(paintingPacket.getPacket(), this.xPosition, this.yPosition, this.zPosition, 16, mod_PaintingChooser.instance);
+				PCInit.PChooser.getProxy().sendPacketToAll(paintingPacket.getPacket(), this.xPosition, this.yPosition, this.zPosition, 16, PaintingChooser.instance);
 			}
 		}
 	}
@@ -132,7 +138,7 @@ public class EntityPaintings extends EntityPainting
         {
             this.setDead();
             this.setBeenAttacked();
-            this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(PChooserCore.itemPaintings)));
+            this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(PCCore.itemPaintings)));
         }
 
         return true;
@@ -146,7 +152,7 @@ public class EntityPaintings extends EntityPainting
         if (!this.worldObj.isRemote && !this.isDead && par1 * par1 + par3 * par3 + par5 * par5 > 0.0D)
         {
             this.setDead();
-            this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(PChooserCore.itemPaintings)));
+            this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(PCCore.itemPaintings)));
         }
     }
 
@@ -159,7 +165,7 @@ public class EntityPaintings extends EntityPainting
         if (!this.worldObj.isRemote && !this.isDead && par1 * par1 + par3 * par3 + par5 * par5 > 0.0D)
         {
             this.setDead();
-            this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(PChooserCore.itemPaintings)));
+            this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.posX, this.posY, this.posZ, new ItemStack(PCCore.itemPaintings)));
         }
     }
 
