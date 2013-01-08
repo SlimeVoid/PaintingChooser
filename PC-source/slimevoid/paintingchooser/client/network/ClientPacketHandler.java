@@ -5,8 +5,6 @@ import java.io.DataInputStream;
 
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
-import eurysmods.network.packets.core.PacketIds;
-import eurysmods.network.packets.core.PacketUpdate;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityPainting;
@@ -16,6 +14,8 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumArt;
 import net.minecraft.world.World;
 
+import slimevoid.lib.network.PacketIds;
+import slimevoid.lib.network.PacketUpdate;
 import slimevoid.paintingchooser.PCCore;
 import slimevoid.paintingchooser.PCInit;
 import slimevoid.paintingchooser.api.IPCCommonProxy;

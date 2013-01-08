@@ -2,10 +2,11 @@ package slimevoid.paintingchooser.api;
 
 import java.util.ArrayList;
 
+import slimevoid.lib.ICommonProxy;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import eurysmods.api.ICommonProxy;
 
 public interface IPCCommonProxy extends ICommonProxy {
 

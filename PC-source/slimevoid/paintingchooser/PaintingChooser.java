@@ -7,7 +7,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
-import eurysmods.api.ICommonProxy;
+import slimevoid.lib.ICommonProxy;
 import slimevoid.paintingchooser.client.network.ClientPacketHandler;
 import slimevoid.paintingchooser.network.CommonPacketHandler;
 

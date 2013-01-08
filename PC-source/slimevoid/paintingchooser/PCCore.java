@@ -2,13 +2,13 @@ package slimevoid.paintingchooser;
 
 import java.io.File;
 
+import slimevoid.lib.ICommonProxy;
 import slimevoid.paintingchooser.entity.EntityPaintings;
 import slimevoid.paintingchooser.items.ItemPaintings;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import eurysmods.api.ICommonProxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;

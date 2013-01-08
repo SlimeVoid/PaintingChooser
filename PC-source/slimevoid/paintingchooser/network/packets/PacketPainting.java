@@ -5,8 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import net.minecraft.world.World;
+import slimevoid.lib.network.PacketUpdate;
 import slimevoid.paintingchooser.PCInit;
-import eurysmods.network.packets.core.PacketUpdate;
 
 public class PacketPainting extends PacketUpdate {
 

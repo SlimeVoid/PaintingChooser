@@ -1,17 +1,17 @@
 package slimevoid.paintingchooser;
 
+import slimevoid.lib.ICommonProxy;
+import slimevoid.lib.ICore;
+import slimevoid.lib.core.Core;
+import slimevoid.lib.core.SlimevoidCore;
+import slimevoid.lib.core.SlimevoidLib;
+import slimevoid.lib.core.ItemRemover;
+import slimevoid.lib.core.RecipeRemover;
 import net.minecraft.item.Item;
-import eurysmods.api.ICommonProxy;
-import eurysmods.api.ICore;
-import eurysmods.core.Core;
-import eurysmods.core.EurysCore;
-import eurysmods.core.EurysMods;
-import eurysmods.core.ItemRemover;
-import eurysmods.core.RecipeRemover;
 
 public class PCInit {
 
-	public static String minecraftDir = EurysMods.proxy.getMinecraftDir();
+	public static String minecraftDir = SlimevoidLib.proxy.getMinecraftDir();
 	public static ICore PChooser;
 	private static boolean initialized = false;
 
@@ -30,11 +30,11 @@ public class PCInit {
 		RecipeRemover.registerItemRecipeToRemove(Item.painting);
 		ItemRemover.removeVanillaItem(Item.painting);
 		PChooser.getProxy().registerRenderInformation();
-		EurysCore.console(PChooser.getModName(), "Registering items...");
+		SlimevoidCore.console(PChooser.getModName(), "Registering items...");
 		PCCore.addItems();
-		EurysCore.console(PChooser.getModName(), "Naming items...");
+		SlimevoidCore.console(PChooser.getModName(), "Naming items...");
 		PCCore.addNames();
-		EurysCore.console(PChooser.getModName(), "Registering recipes...");
+		SlimevoidCore.console(PChooser.getModName(), "Registering recipes...");
 		PCCore.addRecipes();
 	}
 }
