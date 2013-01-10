@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 import cpw.mods.fml.common.network.PacketDispatcher;
 
-import slimevoid.paintingchooser.PCCore;
+import slimevoid.paintingchooser.core.PCCore;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
 import slimevoid.paintingchooser.network.packets.PacketUpdatePainting;
 

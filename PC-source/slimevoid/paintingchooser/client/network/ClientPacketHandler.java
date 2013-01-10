@@ -16,9 +16,9 @@ import net.minecraft.world.World;
 
 import slimevoid.lib.network.PacketIds;
 import slimevoid.lib.network.PacketUpdate;
-import slimevoid.paintingchooser.PCCore;
-import slimevoid.paintingchooser.PCInit;
 import slimevoid.paintingchooser.api.IPCCommonProxy;
+import slimevoid.paintingchooser.core.PCCore;
+import slimevoid.paintingchooser.core.PCInit;
 import slimevoid.paintingchooser.network.CommonPacketHandler;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
 import slimevoid.paintingchooser.network.packets.PacketPaintingGui;

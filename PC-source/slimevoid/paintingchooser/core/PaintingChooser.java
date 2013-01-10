@@ -1,4 +1,4 @@
-package slimevoid.paintingchooser;
+package slimevoid.paintingchooser.core;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;

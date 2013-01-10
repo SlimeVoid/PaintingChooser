@@ -1,4 +1,4 @@
-package slimevoid.paintingchooser;
+package slimevoid.paintingchooser.core;
 
 import java.io.File;
 
@@ -19,7 +19,7 @@ import net.minecraftforge.common.Configuration;
 
 public class PCCore {
 
-	public final static String version = "2.0.0.0";
+	public final static String version = "2.0.0.1";
 	public static File configFile = new File(PCInit.minecraftDir,
 			"config/PaintingChooser.cfg");
 	public static Configuration configuration = new Configuration(configFile);

@@ -11,7 +11,7 @@ import net.minecraft.util.EnumArt;
 
 import org.lwjgl.opengl.GL11;
 
-import slimevoid.paintingchooser.PCCore;
+import slimevoid.paintingchooser.core.PCCore;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
 import slimevoid.paintingchooser.network.packets.PacketPaintingGui;
 import slimevoid.paintingchooser.network.packets.PacketUpdatePainting;

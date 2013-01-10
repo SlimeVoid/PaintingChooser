@@ -1,4 +1,4 @@
-package slimevoid.paintingchooser;
+package slimevoid.paintingchooser.core;
 
 import slimevoid.lib.ICommonProxy;
 import slimevoid.lib.ICore;
