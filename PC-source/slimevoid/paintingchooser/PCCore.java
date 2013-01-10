@@ -58,7 +58,7 @@ public class PCCore {
 				ModLoader.getUniqueEntityId()).value);
 		itemPaintingsID = Integer.parseInt(configuration.get(
 				Configuration.CATEGORY_ITEM, "itemPaintingsID",
-				Item.painting.shiftedIndex).value);
+				Item.painting.itemID).value);
 		configuration.save();
 		return entityPaintingsID;
 	}

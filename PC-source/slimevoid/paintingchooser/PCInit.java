@@ -26,9 +26,9 @@ public class PCInit {
 	}
 
 	private static void load() {
-		PChooser.getProxy().preInit();
-		RecipeRemover.registerItemRecipeToRemove(Item.painting);
+		//RecipeRemover.registerItemRecipeToRemove(Item.painting);
 		ItemRemover.removeVanillaItem(Item.painting);
+		PChooser.getProxy().preInit();
 		PChooser.getProxy().registerRenderInformation();
 		SlimevoidCore.console(PChooser.getModName(), "Registering items...");
 		PCCore.addItems();

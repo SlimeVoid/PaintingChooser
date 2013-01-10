@@ -11,7 +11,11 @@ import slimevoid.lib.ICommonProxy;
 import slimevoid.paintingchooser.client.network.ClientPacketHandler;
 import slimevoid.paintingchooser.network.CommonPacketHandler;
 
-@Mod(modid = "PaintingChooser", name = "Painting Chooser", version = PCCore.version)
+@Mod(
+		modid = "PaintingChooser",
+		name = "Painting Chooser",
+		version = PCCore.version,
+		dependencies = "after:SlimevoidLib")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, clientPacketHandlerSpec = @SidedPacketHandler(channels = { "PChooser" }, packetHandler = ClientPacketHandler.class), serverPacketHandlerSpec = @SidedPacketHandler(channels = { "PChooser" }, packetHandler = CommonPacketHandler.class))
 public class PaintingChooser {
 
