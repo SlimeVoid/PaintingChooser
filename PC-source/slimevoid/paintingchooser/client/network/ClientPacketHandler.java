@@ -33,7 +33,7 @@ public class ClientPacketHandler implements IPacketHandler {
 		} else if (packet instanceof PacketPaintingGui) {
 			PacketPaintingGui guiPacket = (PacketPaintingGui) packet;
 			int entityId = guiPacket.getEntityId();
-			Entity entity = EntityHelper.getEntityByID(entityId);
+			Entity entity = world.getEntityByID(entityId);
 			if (entity != null) {
 				((IPCCommonProxy) PCInit.PChooser.getProxy()).displayEntityGui(
 						world, entityplayer, entity, guiPacket.getArtList());
