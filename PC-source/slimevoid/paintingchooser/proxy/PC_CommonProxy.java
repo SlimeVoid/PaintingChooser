@@ -2,10 +2,6 @@ package slimevoid.paintingchooser.proxy;
 
 import java.util.ArrayList;
 
-import slimevoid.lib.IPacketHandling;
-import slimevoid.paintingchooser.api.IPCCommonProxy;
-import slimevoid.paintingchooser.network.packets.PCPacketIds;
-import slimevoid.paintingchooser.network.packets.PacketPaintingGui;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +11,10 @@ import net.minecraft.network.packet.Packet1Login;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import slimevoid.lib.IPacketHandling;
+import slimevoid.paintingchooser.api.IPCCommonProxy;
+import slimevoid.paintingchooser.network.packets.PCPacketIds;
+import slimevoid.paintingchooser.network.packets.PacketPaintingGui;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 

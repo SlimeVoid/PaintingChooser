@@ -2,11 +2,10 @@ package slimevoid.paintingchooser.network.packets;
 
 import java.util.ArrayList;
 
-import slimevoid.lib.network.PacketIds;
-import slimevoid.lib.network.PacketPayload;
-
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.util.EnumArt;
+import slimevoid.lib.network.PacketIds;
+import slimevoid.lib.network.PacketPayload;
 
 
 public class PacketPaintingGui extends PacketPainting {

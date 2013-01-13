@@ -2,20 +2,15 @@ package slimevoid.paintingchooser.core;
 
 import java.io.File;
 
-import slimevoid.lib.ICommonProxy;
-import slimevoid.paintingchooser.entity.EntityPaintings;
-import slimevoid.paintingchooser.items.ItemPaintings;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.Configuration;
+import slimevoid.lib.ICommonProxy;
+import slimevoid.paintingchooser.entity.EntityPaintings;
+import slimevoid.paintingchooser.items.ItemPaintings;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class PCCore {
 

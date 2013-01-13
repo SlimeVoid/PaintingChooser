@@ -33,6 +33,7 @@ public class GuiPainting extends GuiScreen {
 	/**
 	 * Adds the buttons (and other controls) to the screen in question.
 	 */
+	@Override
 	public void initGui() {
 		this.controlList.clear();
 		this.controlList.add(new GuiButton(0,
@@ -200,6 +201,7 @@ public class GuiPainting extends GuiScreen {
 	 * Fired when a key is typed. This is the equivalent of
 	 * KeyListener.keyTyped(KeyEvent e).
 	 */
+	@Override
 	protected void keyTyped(char var1, int var2) {
 		if (var2 == 1 || var2 == this.mc.gameSettings.keyBindInventory.keyCode) {
 			this.myPainting.setDead();
@@ -223,6 +225,7 @@ public class GuiPainting extends GuiScreen {
 	 * Fired when a control is clicked. This is the equivalent of
 	 * ActionListener.actionPerformed(ActionEvent e).
 	 */
+	@Override
 	protected void actionPerformed(GuiButton buttonPressed) {
 		if (buttonPressed.enabled) {
 			if (buttonPressed.id == 0) {
@@ -244,12 +247,14 @@ public class GuiPainting extends GuiScreen {
 	 * Called when the screen is unloaded. Used to disable keyboard repeat
 	 * events
 	 */
+	@Override
 	public void onGuiClosed() {
 	}
 
 	/**
 	 * Draws the screen and all the components in it.
 	 */
+	@Override
 	public void drawScreen(int var1, int var2, float var3) {
 		int var4 = (this.width - this.xSize) / 2;
 		int var5 = (this.height - this.ySize) / 2;

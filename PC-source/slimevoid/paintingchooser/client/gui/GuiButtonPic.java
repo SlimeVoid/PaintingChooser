@@ -22,6 +22,7 @@ public class GuiButtonPic extends GuiButton {
 	/**
 	 * Draws this button to the screen.
 	 */
+	@Override
 	public void drawButton(Minecraft var1, int var2, int var3) {
 		if (this.drawButton) {
 			FontRenderer var4 = var1.fontRenderer;
