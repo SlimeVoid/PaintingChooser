@@ -62,25 +62,4 @@ public class PCCore {
 		configuration.save();
 		return entityPaintingsID;
 	}
-
-	// Get the entity with the given entity ID
-	@SideOnly(Side.CLIENT)
-	public static Entity getEntityByID(int i) {
-		if (i == ModLoader.getMinecraftInstance().thePlayer.entityId) {
-			return ModLoader.getMinecraftInstance().thePlayer;
-		} else {
-			for (int j = 0; j < ModLoader.getMinecraftInstance().theWorld.loadedEntityList
-					.size(); j++) {
-				Entity entity = (Entity) ModLoader.getMinecraftInstance().theWorld.loadedEntityList
-						.get(j);
-				if (entity == null) {
-					return null;
-				}
-				if (entity.entityId == i) {
-					return entity;
-				}
-			}
-		}
-		return null;
-	}
 }

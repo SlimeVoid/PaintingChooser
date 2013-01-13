@@ -14,10 +14,10 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumArt;
 import net.minecraft.world.World;
 
+import slimevoid.lib.entity.EntityHelper;
 import slimevoid.lib.network.PacketIds;
 import slimevoid.lib.network.PacketUpdate;
 import slimevoid.paintingchooser.api.IPCCommonProxy;
-import slimevoid.paintingchooser.core.PCCore;
 import slimevoid.paintingchooser.core.PCInit;
 import slimevoid.paintingchooser.network.CommonPacketHandler;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
@@ -33,7 +33,7 @@ public class ClientPacketHandler implements IPacketHandler {
 		} else if (packet instanceof PacketPaintingGui) {
 			PacketPaintingGui guiPacket = (PacketPaintingGui) packet;
 			int entityId = guiPacket.getEntityId();
-			Entity entity = PCCore.getEntityByID(entityId);
+			Entity entity = EntityHelper.getEntityByID(entityId);
 			if (entity != null) {
 				((IPCCommonProxy) PCInit.PChooser.getProxy()).displayEntityGui(
 						world, entityplayer, entity, guiPacket.getArtList());
