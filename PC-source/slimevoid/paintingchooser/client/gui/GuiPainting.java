@@ -42,6 +42,7 @@ public class GuiPainting extends GuiScreen {
 		this.addPaintingsToGui();
 	}
 
+	@SuppressWarnings("unchecked")
 	private void addPaintingsToGui() {
 		for (int var1 = 0; var1 < this.possiblePaintings.size(); ++var1) {
 			if ((EnumArt) this.possiblePaintings.get(var1) == EnumArt.Kebab) {
@@ -151,10 +152,17 @@ public class GuiPainting extends GuiScreen {
 						EnumArt.SkullAndRoses.offsetY,
 						EnumArt.SkullAndRoses.sizeX,
 						EnumArt.SkullAndRoses.sizeY));
+				this.controlList.add(new GuiButtonPic(20,
+						(this.width - this.xSize) / 2 + 205,
+						(this.height - this.ySize) / 2 + 135,
+						EnumArt.Wither.offsetX,
+						EnumArt.Wither.offsetY,
+						EnumArt.Wither.sizeX,
+						EnumArt.Wither.sizeY));
 			}
 
 			if ((EnumArt) this.possiblePaintings.get(var1) == EnumArt.Fighters) {
-				this.controlList.add(new GuiButtonPic(20,
+				this.controlList.add(new GuiButtonPic(21,
 						(this.width - this.xSize) / 2 + 177,
 						(this.height - this.ySize) / 2 + 47,
 						EnumArt.Fighters.offsetX, EnumArt.Fighters.offsetY,
@@ -162,18 +170,18 @@ public class GuiPainting extends GuiScreen {
 			}
 
 			if ((EnumArt) this.possiblePaintings.get(var1) == EnumArt.Pointer) {
-				this.controlList.add(new GuiButtonPic(21,
+				this.controlList.add(new GuiButtonPic(22,
 						(this.width - this.xSize) / 2 + 7,
 						(this.height - this.ySize) / 2 + 135,
 						EnumArt.Pointer.offsetX, EnumArt.Pointer.offsetY,
 						EnumArt.Pointer.sizeX, EnumArt.Pointer.sizeY));
-				this.controlList.add(new GuiButtonPic(22,
+				this.controlList.add(new GuiButtonPic(23,
 						(this.width - this.xSize) / 2 + 73,
 						(this.height - this.ySize) / 2 + 135,
 						EnumArt.Pigscene.offsetX, EnumArt.Pigscene.offsetY,
 						EnumArt.Pigscene.sizeX, EnumArt.Pigscene.sizeY));
 				this.controlList
-						.add(new GuiButtonPic(23,
+						.add(new GuiButtonPic(24,
 								(this.width - this.xSize) / 2 + 139,
 								(this.height - this.ySize) / 2 + 135,
 								EnumArt.BurningSkull.offsetX,
@@ -183,12 +191,12 @@ public class GuiPainting extends GuiScreen {
 			}
 
 			if ((EnumArt) this.possiblePaintings.get(var1) == EnumArt.Skeleton) {
-				this.controlList.add(new GuiButtonPic(24,
+				this.controlList.add(new GuiButtonPic(25,
 						(this.width - this.xSize) / 2 + 7,
 						(this.height - this.ySize) / 2 + 83,
 						EnumArt.Skeleton.offsetX, EnumArt.Skeleton.offsetY,
 						EnumArt.Skeleton.sizeX, EnumArt.Skeleton.sizeY));
-				this.controlList.add(new GuiButtonPic(25,
+				this.controlList.add(new GuiButtonPic(26,
 						(this.width - this.xSize) / 2 + 73,
 						(this.height - this.ySize) / 2 + 83,
 						EnumArt.DonkeyKong.offsetX, EnumArt.DonkeyKong.offsetY,

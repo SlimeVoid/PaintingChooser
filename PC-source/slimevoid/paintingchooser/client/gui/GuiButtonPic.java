@@ -10,13 +10,13 @@ public class GuiButtonPic extends GuiButton {
 	protected int p1;
 	protected int p2;
 
-	public GuiButtonPic(int var1, int var2, int var3, int var4, int var5,
-			int var6, int var7) {
-		super(var1, var2, var3, var6, var7, "");
-		this.width = var6;
-		this.height = var7;
-		this.p1 = var4;
-		this.p2 = var5;
+	public GuiButtonPic(int id, int xPosition, int yPosition, int p1, int p2,
+			int width, int height) {
+		super(id, xPosition, yPosition, width, height, "");
+		this.width = width;
+		this.height = height;
+		this.p1 = p1;
+		this.p2 = p2;
 	}
 
 	/**
