@@ -2,15 +2,15 @@ package slimevoid.paintingchooser.items;
 
 import java.util.ArrayList;
 
-import slimevoid.paintingchooser.api.IPCCommonProxy;
-import slimevoid.paintingchooser.core.PCInit;
-import slimevoid.paintingchooser.entity.EntityPaintings;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemHangingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
+import slimevoid.paintingchooser.api.IPCCommonProxy;
+import slimevoid.paintingchooser.core.PCInit;
+import slimevoid.paintingchooser.entity.EntityPaintings;
 
 public class ItemPaintings extends ItemHangingEntity {
 	private Class paintingClass;
@@ -20,6 +20,7 @@ public class ItemPaintings extends ItemHangingEntity {
 		this.paintingClass = entityClass;
 	}
 
+	@Override
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer,
 			World world, int x, int y, int z, int side, float a, float b,
 			float c) {

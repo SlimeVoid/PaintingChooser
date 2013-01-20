@@ -1,8 +1,8 @@
 package slimevoid.paintingchooser.network.packets;
 
+import net.minecraft.entity.item.EntityPainting;
 import slimevoid.lib.network.PacketIds;
 import slimevoid.lib.network.PacketPayload;
-import net.minecraft.entity.item.EntityPainting;
 
 public class PacketUpdatePainting extends PacketPainting {
 
