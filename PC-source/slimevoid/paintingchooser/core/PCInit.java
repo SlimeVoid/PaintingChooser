@@ -4,7 +4,7 @@ import net.minecraft.item.Item;
 import slimevoid.lib.ICommonProxy;
 import slimevoid.lib.ICore;
 import slimevoid.lib.core.Core;
-import slimevoid.lib.core.ItemRemover;
+import slimevoid.lib.util.ItemRemover;
 import slimevoid.lib.core.SlimevoidCore;
 import slimevoid.lib.core.SlimevoidLib;
 
