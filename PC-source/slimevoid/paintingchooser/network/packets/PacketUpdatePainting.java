@@ -13,7 +13,7 @@ public class PacketUpdatePainting extends PacketPainting {
 	public PacketUpdatePainting(EntityPainting entitypaintings) {
 		this();
 
-		this.payload = new PacketPayload(3, 0, 1, 0);
+		this.payload = new PacketPayload(3, 0, 0, 0);
 		this.xPosition = entitypaintings.xPosition;
 		this.yPosition = entitypaintings.yPosition;
 		this.zPosition = entitypaintings.zPosition;
@@ -27,10 +27,6 @@ public class PacketUpdatePainting extends PacketPainting {
 		this.setCommand(command);
 	}
 
-	public void setCommand(String command) {
-		this.payload.setStringPayload(0, command);
-	}
-
 	public void setEntityId(int entityId) {
 		this.payload.setIntPayload(0, entityId);
 	}
@@ -41,10 +37,6 @@ public class PacketUpdatePainting extends PacketPainting {
 
 	public void setDirection(int direction) {
 		this.payload.setIntPayload(2, direction);
-	}
-
-	public String getCommand() {
-		return this.payload.getStringPayload(0);
 	}
 
 	public int getEntityId() {
