@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import slimevoid.lib.ICommonProxy;
+import slimevoidlib.ICommonProxy;
 
 public interface IPCCommonProxy extends ICommonProxy {
 

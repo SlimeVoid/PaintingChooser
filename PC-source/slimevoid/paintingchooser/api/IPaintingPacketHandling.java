@@ -2,8 +2,8 @@ package slimevoid.paintingchooser.api;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import slimevoid.lib.IPacketHandling;
-import slimevoid.lib.network.PacketUpdate;
+import slimevoidlib.IPacketHandling;
+import slimevoidlib.network.PacketUpdate;
 
 public interface IPaintingPacketHandling extends IPacketHandling {
 	@Override

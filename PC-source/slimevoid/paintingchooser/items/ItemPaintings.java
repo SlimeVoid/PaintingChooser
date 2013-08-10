@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
 import slimevoid.paintingchooser.api.IPCCommonProxy;
-import slimevoid.paintingchooser.core.PCInit;
+import slimevoid.paintingchooser.core.PaintingChooser;
 import slimevoid.paintingchooser.entity.EntityPaintings;
 
 public class ItemPaintings extends ItemHangingEntity {
@@ -29,9 +29,9 @@ public class ItemPaintings extends ItemHangingEntity {
 		} else if (side == 1) {
 			return false;
 		} else {
-			int var11 = Direction.vineGrowth[side];
+			int direction = Direction.facingToDirection[side];
 			EntityHanging painting = this.createHangingEntity(world,
-					entityplayer, x, y, z, var11);
+					entityplayer, x, y, z, direction);
 
 			if (!entityplayer.canPlayerEdit(x, y, z, side, itemstack)) {
 				return false;
@@ -43,7 +43,7 @@ public class ItemPaintings extends ItemHangingEntity {
 							ArrayList art = EntityPaintings.playerArt
 									.get(entityplayer);
 							if (art.size() > 0) {
-								((IPCCommonProxy) PCInit.PChooser.getProxy())
+								((IPCCommonProxy) PaintingChooser.proxy)
 										.displayEntityGui(world, entityplayer,
 												painting,
 												EntityPaintings.playerArt

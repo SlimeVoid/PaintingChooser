@@ -5,8 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import net.minecraft.world.World;
-import slimevoid.lib.network.PacketUpdate;
-import slimevoid.paintingchooser.core.PCInit;
+import slimevoidlib.network.PacketUpdate;
+import slimevoid.paintingchooser.core.lib.CoreLib;
 
 public class PacketPainting extends PacketUpdate {
 
@@ -14,7 +14,7 @@ public class PacketPainting extends PacketUpdate {
 
 	public PacketPainting(int packetId) {
 		super(packetId);
-		this.setChannel(PCInit.PChooser.getModChannel());
+		this.setChannel(CoreLib.MOD_CHANNEL);
 	}
 
 	@Override

@@ -1,25 +1,19 @@
 package slimevoid.paintingchooser.core;
 
 import net.minecraft.item.Item;
-import slimevoid.lib.ICommonProxy;
-import slimevoid.lib.ICore;
-import slimevoid.lib.core.Core;
-import slimevoid.lib.core.SlimevoidCore;
-import slimevoid.lib.core.SlimevoidLib;
-import slimevoid.lib.util.ItemRemover;
+import slimevoid.paintingchooser.core.lib.CoreLib;
+import slimevoidlib.core.SlimevoidCore;
+import slimevoidlib.core.SlimevoidLib;
+import slimevoidlib.util.ItemRemover;
 
 public class PCInit {
 
 	public static String minecraftDir = SlimevoidLib.proxy.getMinecraftDir();
-	public static ICore PChooser;
 	private static boolean initialized = false;
 
-	public static void initialize(ICommonProxy proxy) {
+	public static void initialize() {
 		if (!initialized) {
 			initialized = true;
-			PChooser = new Core(proxy);
-			PChooser.setModName("PaintingChooser");
-			PChooser.setModChannel("PChooser");
 			load();
 		}
 	}
@@ -27,13 +21,13 @@ public class PCInit {
 	private static void load() {
 		//RecipeRemover.registerItemRecipeToRemove(Item.painting);
 		ItemRemover.removeVanillaItem(Item.painting);
-		PChooser.getProxy().preInit();
-		PChooser.getProxy().registerRenderInformation();
-		SlimevoidCore.console(PChooser.getModName(), "Registering items...");
+		PaintingChooser.proxy.preInit();
+		PaintingChooser.proxy.registerRenderInformation();
+		SlimevoidCore.console(CoreLib.MOD_ID, "Registering items...");
 		PCCore.addItems();
-		SlimevoidCore.console(PChooser.getModName(), "Naming items...");
+		SlimevoidCore.console(CoreLib.MOD_ID, "Naming items...");
 		PCCore.addNames();
-		SlimevoidCore.console(PChooser.getModName(), "Registering recipes...");
+		SlimevoidCore.console(CoreLib.MOD_ID, "Registering recipes...");
 		PCCore.addRecipes();
 	}
 }

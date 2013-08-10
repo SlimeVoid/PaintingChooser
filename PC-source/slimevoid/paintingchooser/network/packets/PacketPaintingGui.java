@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.util.EnumArt;
-import slimevoid.lib.network.PacketIds;
-import slimevoid.lib.network.PacketPayload;
+import slimevoidlib.network.PacketIds;
+import slimevoidlib.network.PacketPayload;
 
 
 public class PacketPaintingGui extends PacketPainting {

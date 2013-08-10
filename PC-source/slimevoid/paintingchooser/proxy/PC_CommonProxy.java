@@ -11,7 +11,7 @@ import net.minecraft.network.packet.Packet1Login;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import slimevoid.lib.IPacketHandling;
+import slimevoidlib.IPacketHandling;
 import slimevoid.paintingchooser.api.IPCCommonProxy;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
 import slimevoid.paintingchooser.network.packets.PacketPaintingGui;

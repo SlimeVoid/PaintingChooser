@@ -12,9 +12,10 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.EnumArt;
 import net.minecraft.world.World;
-import slimevoid.lib.network.PacketIds;
-import slimevoid.lib.network.PacketUpdate;
+import slimevoidlib.network.PacketIds;
+import slimevoidlib.network.PacketUpdate;
 import slimevoid.paintingchooser.core.PCCore;
+import slimevoid.paintingchooser.core.lib.CommandLib;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
 import slimevoid.paintingchooser.network.packets.PacketPaintingGui;
 import slimevoid.paintingchooser.network.packets.PacketUpdatePainting;
@@ -70,7 +71,7 @@ public class CommonPacketHandler implements IPacketHandler {
 	public static void notifyPlayers(EntityPainting entitypainting) {
 		if (entitypainting != null && entitypainting.art != null) {
 			PacketUpdatePainting paintingPacket = new PacketUpdatePainting(
-					entitypainting, PCCore.paintingUpdateCommand);
+					entitypainting, CommandLib.paintingUpdateCommand);
 			paintingPacket.setArtConstant(entitypainting.art.ordinal());
 			paintingPacket.setSender(PCPacketIds.SERVER);
 			PacketDispatcher.sendPacketToAllAround(entitypainting.xPosition,

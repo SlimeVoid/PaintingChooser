@@ -6,6 +6,8 @@ import net.minecraft.client.gui.GuiButton;
 
 import org.lwjgl.opengl.GL11;
 
+import slimevoid.paintingchooser.core.lib.GuiLib;
+
 public class GuiButtonPic extends GuiButton {
 	protected int p1;
 	protected int p2;
@@ -26,8 +28,7 @@ public class GuiButtonPic extends GuiButton {
 	public void drawButton(Minecraft var1, int var2, int var3) {
 		if (this.drawButton) {
 			FontRenderer var4 = var1.fontRenderer;
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D,
-					var1.renderEngine.getTexture("/art/kz.png"));
+			var1.renderEngine.func_110577_a(GuiLib.GUI_PAINTINGS);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			boolean var5 = var2 >= this.xPosition && var3 >= this.yPosition
 					&& var2 < this.xPosition + this.width

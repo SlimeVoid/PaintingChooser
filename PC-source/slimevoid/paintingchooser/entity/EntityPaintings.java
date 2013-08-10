@@ -12,6 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumArt;
 import net.minecraft.world.World;
 import slimevoid.paintingchooser.core.PCCore;
+import slimevoid.paintingchooser.core.lib.CommandLib;
 import slimevoid.paintingchooser.network.packets.PCPacketIds;
 import slimevoid.paintingchooser.network.packets.PacketUpdatePainting;
 import cpw.mods.fml.common.network.PacketDispatcher;
@@ -115,10 +116,10 @@ public class EntityPaintings extends EntityPainting {
 				PacketUpdatePainting paintingPacket = new PacketUpdatePainting(
 						this);
 				if (!firstTick) {
-					paintingPacket.setCommand(PCCore.firstUpdateCommand);
+					paintingPacket.setCommand(CommandLib.firstUpdateCommand);
 					paintingPacket.setArtConstant(0);
 				} else {
-					paintingPacket.setCommand(PCCore.paintingUpdateCommand);
+					paintingPacket.setCommand(CommandLib.paintingUpdateCommand);
 					paintingPacket.setArtConstant(this.art.ordinal());
 				}
 				paintingPacket.setSender(PCPacketIds.SERVER);
@@ -134,7 +135,7 @@ public class EntityPaintings extends EntityPainting {
 	 * Called when the entity is attacked.
 	 */
 	@Override
-	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2) {
+	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
 		if (!this.isDead && !this.worldObj.isRemote) {
 			this.setDead();
 			this.setBeenAttacked();

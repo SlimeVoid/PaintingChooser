@@ -5,33 +5,35 @@ import java.util.Random;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderPainting;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumArt;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import slimevoid.paintingchooser.entity.EntityPaintings;
 
-public class RenderPaintings extends Render {
+public class RenderPaintings extends RenderPainting {
+
 	/** RNG. */
 	private Random rand = new Random();
 
-	public void func_158_a(EntityPaintings par1EntityPaintings, double par2,
+	public void renderPainting(EntityPaintings par1EntityPaintings, double par2,
 			double par4, double par6, float par8, float par9) {
-		EnumArt var10 = par1EntityPaintings.art;
-		if (var10 != null) {
+		EnumArt art = par1EntityPaintings.art;
+		if (art != null) {
 			this.rand.setSeed(187L);
 			GL11.glPushMatrix();
 			GL11.glTranslatef((float) par2, (float) par4, (float) par6);
 			GL11.glRotatef(par8, 0.0F, 1.0F, 0.0F);
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			this.loadTexture("/art/kz.png");
 			float var11 = 0.0625F;
 			GL11.glScalef(var11, var11, var11);
-			this.func_159_a(par1EntityPaintings, var10.sizeX, var10.sizeY,
-					var10.offsetX, var10.offsetY);
+			this.func_159_a(par1EntityPaintings, art.sizeX, art.sizeY,
+					art.offsetX, art.offsetY);
 			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 			GL11.glPopMatrix();
 		}
@@ -176,7 +178,7 @@ public class RenderPaintings extends Render {
 	@Override
 	public void doRender(Entity par1Entity, double par2, double par4,
 			double par6, float par8, float par9) {
-		this.func_158_a((EntityPaintings) par1Entity, par2, par4, par6, par8,
+		this.renderPainting((EntityPaintings) par1Entity, par2, par4, par6, par8,
 				par9);
 	}
 }
